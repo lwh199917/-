@@ -1,0 +1,108 @@
+package cn.yang;
+import java.util.Scanner;
+
+
+public class 魔方 {
+	public static String xm,ym,zm;
+	public static String roll;
+	public static String xmTop[]={"绿","绿","绿","绿"};
+	public static String xmBack[]={"蓝","蓝","蓝","蓝"};
+	public static String ymTop[]={"红","红","红","红"};
+	public static String ymBack[]={"橙","橙","橙","橙"};
+	public static String zmTop[]={"白","白","白","白"};
+	public static String zmDown[]={"黄","黄","黄","黄"};
+	public static void main(String[] args) {
+		System.out.println("输入转动方式:");
+		Scanner s=new Scanner(System.in);
+		roll=s.next();
+		xm="绿";ym="红";zm="白";
+		for(int i=0;i<roll.length();i++)
+		{
+			String rm1,rm2,rm3,rm4;
+			char c=roll.charAt(i);
+			switch (c) {
+			case 'x':
+				rm1=ymTop[0];
+				rm2=ymTop[2];
+				rm3=zmDown[0];
+				rm4=zmDown[2];
+				zmDown[0]=rm1;
+				zmDown[2]=rm2;
+				rm1=ymBack[0];
+				rm2=ymBack[2];
+				ymBack[2]=rm3;
+				ymBack[0]=rm4;
+				rm3=zmTop[0];
+				rm4=zmTop[2];
+				zmTop[0]=rm1;
+				zmTop[2]=rm2;
+				ymTop[0]=rm4;
+				ymTop[2]=rm3;
+				rm1=xmTop[0];
+				rm2=xmTop[1];
+				rm3=xmTop[2];
+				rm4=xmTop[3];
+				xmTop[0]=rm3;
+				xmTop[1]=rm1;
+				xmTop[2]=rm4;
+				xmTop[3]=rm2;
+				break;
+			case 'y':
+				rm1=xmTop[1];
+				rm2=xmTop[3];
+				rm3=zmTop[0];
+				rm4=zmTop[1];
+				zmTop[0]=rm2;
+				zmTop[1]=rm1;
+				rm1=xmBack[1];
+				rm2=xmBack[3];
+				xmBack[3]=rm4;
+				xmBack[1]=rm3;
+				rm3=zmDown[0];
+				rm4=zmDown[1];
+				zmDown[0]=rm2;
+				zmDown[1]=rm1;
+				xmTop[1]=rm3;
+				xmTop[3]=rm4;
+				rm1=ymTop[0];
+				rm2=ymTop[1];
+				rm3=ymTop[2];
+				rm4=ymTop[3];
+				ymTop[0]=rm3;
+				ymTop[1]=rm1;
+				ymTop[2]=rm4;
+				ymTop[3]=rm2;
+				break;
+			case 'z':
+				rm1=ymTop[0];
+				rm2=ymTop[1];
+				rm3=xmTop[0];
+				rm4=xmTop[1];
+				xmTop[0]=rm1;
+				xmTop[1]=rm2;
+				rm1=ymBack[0];
+				rm2=ymBack[1];
+				ymBack[0]=rm4;
+				ymBack[1]=rm3;
+				rm3=xmBack[0];
+				rm4=xmBack[1];
+				xmBack[0]=rm1;
+				xmBack[1]=rm2;
+				ymTop[0]=rm4;
+				ymTop[1]=rm3;
+				rm1=zmTop[0];
+				rm2=zmTop[1];
+				rm3=zmTop[2];
+				rm4=zmTop[3];
+				zmTop[0]=rm2;
+				zmTop[1]=rm4;
+				zmTop[2]=rm1;
+				zmTop[3]=rm3;
+				break;
+			}
+		}
+		xm=xmTop[1];ym=ymTop[0];zm=zmTop[0];
+		System.out.println(xm+"\t"+ym+"\t"+zm);
+	}
+}
+
